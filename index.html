@@ -18,9 +18,16 @@
       --red:#e53935;
       --dark:#0f172a;
       --muted:#64748b;
-      --border:#dbe5f1;
-      --bg:#f8fbff;
+      --border:#e5e7eb;
+      --border-blue:#dbe5f1;
+      --bg-light:#f8fafc;
+      --hero-top:#eef6ff;
+      --hero-mid:#f7fbff;
       --card:#ffffff;
+      --navy:#071629;
+      --shadow-sm:0 10px 24px rgba(15,23,42,0.06);
+      --shadow-md:0 18px 42px rgba(15,23,42,0.10);
+      --shadow-lg:0 22px 56px rgba(15,23,42,0.12);
     }
 
     *{
@@ -39,6 +46,8 @@
       text-decoration:none;
       color:inherit;
     }
+
+    /* NAVBAR */
 
     .topbar{
       display:flex;
@@ -71,6 +80,7 @@
     }
 
     .nav a{
+      text-decoration:none;
       font-size:13px;
       color:#555;
       transition:.2s;
@@ -87,17 +97,19 @@
       padding:8px 16px;
       border-radius:6px;
       font-weight:700;
-      box-shadow:0 10px 24px rgba(229,57,53,0.18);
+      box-shadow:0 10px 24px rgba(229,57,53,0.20);
     }
+
+    /* HERO */
 
     .hero{
       min-height:calc(100vh - 60px);
       display:flex;
       align-items:center;
       background:
-        radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent 40%),
-        radial-gradient(circle at 80% 60%, rgba(250,166,26,0.08), transparent 40%),
-        linear-gradient(180deg,#eef6ff 0%,#f7fbff 60%,#ffffff 100%);
+        radial-gradient(circle at 20% 30%, rgba(37,99,235,0.16), transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(250,166,26,0.10), transparent 38%),
+        linear-gradient(180deg,var(--hero-top) 0%,var(--hero-mid) 60%,#ffffff 100%);
     }
 
     .hero-inner{
@@ -108,6 +120,8 @@
       gap:70px;
       padding:70px 20px;
     }
+
+    /* LEFT */
 
     .hero-left{
       text-align:center;
@@ -148,6 +162,8 @@
       color:var(--dark);
     }
 
+    /* TOGGLE */
+
     .toggle{
       display:inline-flex;
       margin:20px 0 26px;
@@ -174,6 +190,8 @@
       color:var(--blue);
     }
 
+    /* FEATURE PANELS */
+
     .feature-panel{
       display:none;
     }
@@ -189,20 +207,19 @@
     }
 
     .feature-card{
-      background:rgba(255,255,255,.84);
+      background:rgba(255,255,255,.82);
       backdrop-filter:blur(8px);
       border:1px solid #e6edf8;
       border-radius:12px;
       padding:18px;
       transition:.25s;
-      box-shadow:0 10px 24px rgba(15,23,42,0.05);
-      text-align:left;
+      box-shadow:var(--shadow-sm);
     }
 
     .feature-card:hover{
       transform:translateY(-4px);
       box-shadow:0 12px 28px rgba(37,99,235,0.12);
-      border-color:rgba(37,99,235,0.20);
+      border-color:rgba(37,99,235,0.18);
     }
 
     .feature-card h3{
@@ -218,20 +235,22 @@
       line-height:1.6;
     }
 
+    /* RIGHT FORM CARD */
+
     .form-card{
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.90);
       backdrop-filter:blur(12px);
-      border:1px solid var(--border);
+      border:1px solid var(--border-blue);
       border-radius:18px;
       padding:22px;
-      box-shadow:0 18px 42px rgba(15,23,42,0.10);
+      box-shadow:var(--shadow-md);
       align-self:center;
     }
 
     .form-card input{
       width:100%;
       height:46px;
-      border:1px solid var(--border);
+      border:1px solid var(--border-blue);
       border-radius:10px;
       padding:0 14px;
       font-size:13px;
@@ -325,7 +344,7 @@
 
     .socials button{
       height:42px;
-      border:1px solid var(--border);
+      border:1px solid var(--border-blue);
       border-radius:10px;
       background:#fff;
       color:#333;
@@ -339,6 +358,8 @@
       border-color:#c9d9ee;
       background:#f9fbff;
     }
+
+    /* RESPONSIVE */
 
     @media (max-width: 1200px){
       .hero-inner{
@@ -427,6 +448,41 @@
         padding:9px 16px;
       }
     }
+    .toggle{
+  display:inline-flex;
+  margin:20px 0 26px;
+  background:#eef4ff;
+  padding:4px;
+  border-radius:999px;
+  border:1px solid var(--border-blue);
+}
+
+.toggle button{
+  border:none;
+  background:transparent;
+  padding:9px 22px;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:600;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.toggle button.active{
+  background:#ffffff;
+  color:var(--blue-2);
+  box-shadow:0 6px 14px rgba(37,99,235,0.18);
+}
+.toggle{
+  background:#fff;
+  border:1px solid var(--border-blue);
+}
+
+.toggle button.active{
+  background:var(--yellow-soft);
+  color:var(--dark);
+}
   </style>
 </head>
 
@@ -471,32 +527,22 @@
           <div class="feature-grid">
             <div class="feature-card">
               <h3>Vulnerability &amp; Patch Management</h3>
-              <p>Detect, prioritize, and remediate vulnerabilities across operating systems and third-party applications from a centralized console.</p>
+              <p>Detect, prioritize, and remediate vulnerabilities across endpoints.</p>
             </div>
 
             <div class="feature-card">
               <h3>Application &amp; Privilege Control</h3>
-              <p>Allow only trusted applications, remove unnecessary admin rights, and grant secure elevation when users need controlled access.</p>
+              <p>Strengthen endpoint security with trusted application control and least-privilege enforcement.</p>
             </div>
 
             <div class="feature-card">
               <h3>Device Control</h3>
-              <p>Regulate USB and peripheral usage, restrict unauthorized devices, and control data movement across managed endpoints.</p>
+              <p>Regulate peripheral devices and restrict unauthorized USB transfers.</p>
             </div>
 
             <div class="feature-card">
               <h3>Ransomware Protection</h3>
-              <p>Detect suspicious encryption behavior early and reduce the risk of ransomware-driven disruption and data loss.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>Enterprise Data Security</h3>
-              <p>Protect sensitive data with classification, visibility, and policy-based controls that extend beyond the browser.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>Browser Security</h3>
-              <p>Harden browsers, control extensions, restrict risky web access, and enforce safer browsing policies across endpoints.</p>
+              <p>Behavior-based detection protects data at rest, in use, and in transit.</p>
             </div>
           </div>
         </div>
@@ -505,32 +551,22 @@
           <div class="feature-grid">
             <div class="feature-card">
               <h3>Remote Troubleshooting</h3>
-              <p>Securely access devices, resolve user issues faster, and support distributed teams without disrupting productivity.</p>
+              <p>Securely access endpoints and resolve issues remotely.</p>
             </div>
 
             <div class="feature-card">
               <h3>Software Distribution</h3>
-              <p>Deploy, update, and maintain applications at scale with centralized software rollout and management workflows.</p>
+              <p>Deploy and update applications across your network.</p>
             </div>
 
             <div class="feature-card">
               <h3>IT Asset Management</h3>
-              <p>Track hardware and software inventory in real time to improve visibility, compliance, and lifecycle planning.</p>
+              <p>Track hardware and software inventory in real time.</p>
             </div>
 
             <div class="feature-card">
               <h3>OS Deployment</h3>
-              <p>Automate operating system imaging and provisioning to standardize devices and simplify large-scale rollouts.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>Endpoint Compliance</h3>
-              <p>Enforce baseline configurations and monitor endpoint posture to support governance and internal security standards.</p>
-            </div>
-
-            <div class="feature-card">
-              <h3>Unified Endpoint Management</h3>
-              <p>Manage devices, policies, software, and security controls from a single platform built for modern endpoint operations.</p>
+              <p>Automate OS imaging and system provisioning.</p>
             </div>
           </div>
         </div>
