@@ -1,193 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Browser Security Plus to Endpoint Central</title>
+/* HERO */
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --blue:#0b63f6;
-  --blue-dark:#0a1f44;
-  --text:#0f172a;
-  --muted:#5b6475;
-  --border:#e6ebf2;
-  --bg:#f7faff;
-  --card:#ffffff;
-  --shadow:0 20px 50px rgba(15,23,42,.08);
-  --radius:24px;
-  --container:1240px;
-  --red:#e53935;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Inter,sans-serif;
-  color:var(--text);
-  background:#fff;
-  line-height:1.5;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-.container{
-  width:min(var(--container), calc(100% - 40px));
-  margin:0 auto;
-}
-
-/* top bar */
-.topbar{
-  border-bottom:1px solid var(--border);
-  background:#fff;
-}
-
-.topbar-inner{
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  width:min(var(--container), calc(100% - 40px));
-  margin:0 auto;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  font-size:18px;
-}
-
-.logo span:first-child{
-  color:var(--red);
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:26px;
-  flex-wrap:wrap;
-}
-
-.nav a{
-  font-size:14px;
-  color:#334155;
-  font-weight:600;
-}
-
-.trial-btn{
-  background:var(--red);
-  color:#fff !important;
-  padding:11px 18px;
-  border-radius:12px;
-  font-weight:800;
-}
-
-/* hero */
 .hero{
-  padding:78px 0 60px;
+  min-height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
   background:
-    radial-gradient(circle at 12% 20%, rgba(11,99,246,.08), transparent 30%),
-    radial-gradient(circle at 88% 10%, rgba(11,99,246,.06), transparent 26%),
-    linear-gradient(180deg, #f7fbff 0%, #ffffff 72%);
+    radial-gradient(circle at 20% 30%, rgba(25,169,116,0.18), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(11,61,46,0.12), transparent 40%),
+    linear-gradient(180deg,#eef7f3 0%,#f6fbf9 60%,#ffffff 100%);
 }
 
 .hero-inner{
-  width:min(var(--container), calc(100% - 40px));
-  margin:0 auto;
+  width:1150px;
+  margin:auto;
   display:grid;
-  grid-template-columns:minmax(0, 1.05fr) minmax(360px, 420px);
-  gap:42px;
-  align-items:start;
+  grid-template-columns:1fr 380px;
+  gap:70px;
+  padding:70px 20px;
 }
 
+/* LEFT */
+
 .hero-left{
-  min-width:0;
+  text-align:center;
 }
 
 .title-main{
-  font-size:58px;
-  line-height:1.02;
-  letter-spacing:-.04em;
-  font-weight:900;
-  color:#0f172a;
+  font-size:40px;
+  font-weight:800;
 }
 
 .title-script{
-  font-size:34px;
-  line-height:1.1;
-  color:#0f172a;
-  font-weight:700;
-  margin:8px 0 6px;
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  font-size:32px;
+  color:#555;
+  margin:6px 0;
 }
 
 .title-blue{
-  font-size:58px;
-  line-height:1.02;
-  letter-spacing:-.04em;
-  font-weight:900;
-  color:var(--blue);
+  font-size:40px;
+  font-weight:800;
+  color:var(--green-2);
 }
 
 .hero-desc{
-  margin-top:20px;
-  font-size:19px;
-  line-height:1.75;
-  color:var(--muted);
-  max-width:760px;
+  margin:20px auto;
+  max-width:500px;
+  font-size:16px;
+  color:#444;
+  line-height:1.7;
 }
 
 .section-heading{
-  margin-top:34px;
-  font-size:38px;
-  line-height:1.15;
-  letter-spacing:-.03em;
-  font-weight:900;
-  color:var(--text);
+  margin-top:24px;
+  font-size:19px;
+  font-weight:700;
 }
 
+/* TOGGLE */
+
 .toggle{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:22px;
-  margin-bottom:22px;
+  display:inline-flex;
+  margin:20px 0 26px;
+  background:linear-gradient(90deg,var(--green),var(--green-2));
+  padding:4px;
+  border-radius:999px;
 }
 
 .toggle button{
-  padding:12px 18px;
+  border:none;
+  background:transparent;
+  padding:9px 22px;
+  font-size:13px;
+  color:#fff;
+  font-weight:600;
   border-radius:999px;
-  border:1px solid #dbe6f5;
-  background:#fff;
-  color:#344256;
-  font-size:14px;
-  font-weight:800;
   cursor:pointer;
-  transition:.2s ease;
 }
 
 .toggle button.active{
-  background:var(--blue);
-  color:#fff;
-  border-color:var(--blue);
-  box-shadow:0 12px 28px rgba(11,99,246,.24);
+  background:#fff;
+  color:var(--green);
 }
+
+/* FEATURE PANELS */
 
 .feature-panel{
   display:none;
@@ -199,359 +96,210 @@ img{
 
 .feature-grid{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:18px;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
 
 .feature-card{
-  background:var(--card);
-  border:1px solid #e7edf6;
-  border-radius:22px;
-  padding:24px;
-  box-shadow:0 12px 28px rgba(15,23,42,.05);
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(8px);
+  border:1px solid #e8effc;
+  border-radius:12px;
+  padding:18px;
+  transition:.25s;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 22px rgba(11,61,46,0.12);
 }
 
 .feature-card h3{
-  font-size:22px;
-  line-height:1.2;
-  letter-spacing:-.02em;
-  font-weight:800;
-  margin-bottom:10px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:6px;
 }
 
 .feature-card p{
-  color:var(--muted);
-  font-size:15.5px;
-  line-height:1.7;
+  font-size:13px;
+  color:#555;
+  line-height:1.6;
 }
 
-/* form card */
+/* RIGHT FORM CARD */
+
 .form-card{
-  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:24px;
-  box-shadow:var(--shadow);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  align-self:start;
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(12px);
+  border:1px solid #dfe9e4;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(11,61,46,0.10);
+  align-self:center;
 }
 
 .form-card input{
   width:100%;
-  height:50px;
-  border:1px solid #dbe6f5;
-  border-radius:14px;
+  height:46px;
+  border:1px solid #d8e3dd;
+  border-radius:10px;
   padding:0 14px;
-  font-size:14px;
-  color:var(--text);
-  background:#fff;
+  font-size:13px;
+  margin-bottom:12px;
   outline:none;
+  background:#fff;
 }
 
 .form-card input:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 4px rgba(11,99,246,.08);
+  border-color:var(--green-2);
+  box-shadow:0 0 0 3px rgba(25,169,116,0.12);
 }
 
 .region-note{
-  font-size:13px;
-  color:var(--muted);
+  font-size:12px;
+  color:#666;
   line-height:1.6;
+  margin:4px 0 12px;
 }
 
 .checkbox-row{
   display:flex;
   align-items:flex-start;
-  gap:10px;
+  gap:8px;
+  margin-bottom:14px;
 }
 
 .checkbox-row input{
-  width:16px;
-  height:16px;
-  margin-top:2px;
-  flex:0 0 auto;
+  width:14px;
+  height:14px;
+  margin:2px 0 0;
 }
 
 .checkbox-row label{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
+  font-size:12px;
+  color:#666;
+  line-height:1.5;
 }
 
 .signup-btn{
   width:100%;
-  height:52px;
+  height:46px;
   border:none;
-  border-radius:14px;
-  background:var(--red);
+  border-radius:10px;
+  background:#e53935;
   color:#fff;
-  font-size:15px;
-  font-weight:800;
+  font-size:13px;
+  font-weight:700;
   cursor:pointer;
-  box-shadow:0 18px 40px rgba(229,57,53,.24);
+  margin-bottom:12px;
 }
 
 .form-login{
   text-align:center;
-  font-size:13px;
-  color:var(--muted);
+  font-size:12px;
+  color:#666;
+  margin-bottom:12px;
 }
 
 .form-login a{
-  color:var(--blue);
-  font-weight:700;
+  color:var(--green-2);
+  font-weight:600;
 }
 
 .divider{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-top:4px;
+  margin:10px 0 12px;
 }
 
 .divider hr{
   flex:1;
   border:none;
-  border-top:1px solid var(--border);
+  border-top:1px solid #e3ebe7;
 }
 
 .divider span{
-  font-size:12px;
-  color:var(--muted);
+  font-size:11px;
+  color:#777;
 }
 
 .socials{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:10px;
 }
 
 .socials button{
-  height:46px;
-  border:1px solid #dbe6f5;
-  border-radius:12px;
+  height:42px;
+  border:1px solid #d8e3dd;
+  border-radius:10px;
   background:#fff;
-  color:#334155;
-  font-size:14px;
-  font-weight:700;
+  color:#333;
+  font-size:13px;
+  font-weight:600;
   cursor:pointer;
 }
 
-/* responsive */
+/* RESPONSIVE */
+
+@media (max-width: 1200px){
+  .hero-inner{
+    width:100%;
+  }
+}
+
 @media (max-width: 1024px){
+  .hero{
+    min-height:auto;
+    padding:50px 0;
+  }
+
   .hero-inner{
     grid-template-columns:1fr;
-  }
-
-  .title-main,
-  .title-blue{
-    font-size:46px;
-  }
-
-  .title-script{
-    font-size:28px;
+    gap:34px;
+    padding:30px 20px;
   }
 
   .hero-left{
     text-align:center;
   }
 
-  .hero-desc,
-  .section-heading{
-    margin-left:auto;
-    margin-right:auto;
-  }
-
-  .toggle{
-    justify-content:center;
+  .form-card{
+    max-width:420px;
+    width:100%;
+    margin:0 auto;
   }
 }
 
-@media (max-width: 768px){
-  .topbar{
-    padding:14px 0;
-  }
-
-  .topbar-inner{
-    min-height:auto;
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .nav{
-    gap:14px;
-  }
-
-  .hero{
-    padding:56px 0 40px;
-  }
-
+@media (max-width: 640px){
   .title-main,
   .title-blue{
-    font-size:38px;
+    font-size:32px;
   }
 
   .title-script{
-    font-size:24px;
+    font-size:26px;
+  }
+
+  .hero-desc{
+    font-size:15px;
   }
 
   .section-heading{
-    font-size:30px;
+    font-size:17px;
   }
 
   .feature-grid{
     grid-template-columns:1fr;
   }
 
-  .form-card{
-    padding:18px;
-    border-radius:24px;
+  .toggle{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .toggle button{
+    padding:9px 16px;
   }
 }
-</style>
-</head>
-
-<body>
-
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="logo">
-      <span>ManageEngine</span>
-      <span>Endpoint Central</span>
-    </div>
-
-    <nav class="nav">
-      <a href="#">Features</a>
-      <a href="#">Solutions</a>
-      <a href="#">Demo</a>
-      <a href="#">Resources</a>
-      <a href="#">Support</a>
-      <a href="#" class="trial-btn">Free Trial</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-
-    <div class="hero-left">
-      <h1 class="title-main">Browser Security</h1>
-      <div class="title-script">via</div>
-      <div class="title-blue">Endpoint Security Platform</div>
-
-      <p class="hero-desc">
-        Browser security is essential, but it is only one piece of the endpoint security puzzle. True protection goes beyond the browser.
-      </p>
-
-      <h2 class="section-heading">Explore the capabilities of Endpoint Central</h2>
-
-      <div class="toggle">
-        <button class="active" data-target="security">Endpoint Security</button>
-        <button data-target="management">Endpoint Management</button>
-      </div>
-
-      <div class="feature-panel active" id="security">
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Vulnerability & Patch Management</h3>
-            <p>Detect, prioritize, and remediate vulnerabilities across endpoints.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Application & Privilege Control</h3>
-            <p>Strengthen endpoint security with trusted application control and least-privilege enforcement.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Device Control</h3>
-            <p>Regulate peripheral devices and restrict unauthorized USB transfers.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Ransomware Protection</h3>
-            <p>Behavior-based detection protects data at rest, in use, and in transit.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="feature-panel" id="management">
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Remote Troubleshooting</h3>
-            <p>Securely access endpoints and resolve issues remotely.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Software Distribution</h3>
-            <p>Deploy and update applications across your network.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>IT Asset Management</h3>
-            <p>Track hardware and software inventory in real time.</p>
-          </div>
-
-          <div class="feature-card">
-            <h3>OS Deployment</h3>
-            <p>Automate OS imaging and system provisioning.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-card">
-      <input type="text" placeholder="Name *">
-      <input type="email" placeholder="Business Email *">
-      <input type="password" placeholder="Password *">
-      <input type="text" placeholder="Company *">
-
-      <p class="region-note">
-        It looks like you're in India based on your IP.
-      </p>
-
-      <div class="checkbox-row">
-        <input type="checkbox" id="terms">
-        <label for="terms">I agree to the Terms of Service and Privacy Policy.</label>
-      </div>
-
-      <button class="signup-btn">SIGN UP FOR FREE</button>
-
-      <p class="form-login">
-        Already have an account? <a href="#">Login</a>
-      </p>
-
-      <div class="divider">
-        <hr>
-        <span>or sign in using</span>
-        <hr>
-      </div>
-
-      <div class="socials">
-        <button>Google</button>
-        <button>Microsoft</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<script>
-const buttons = document.querySelectorAll(".toggle button");
-const panels = document.querySelectorAll(".feature-panel");
-
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove("active"));
-    panels.forEach(p => p.classList.remove("active"));
-
-    button.classList.add("active");
-    const target = button.getAttribute("data-target");
-    document.getElementById(target).classList.add("active");
-  });
-});
-</script>
-
-</body>
-</html>
