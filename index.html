@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Browser Security Plus to Endpoint Central</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+      --blue:#0b63f6;
+      --blue-dark:#0a1f44;
+      --text:#0f172a;
+      --muted:#5b6475;
+      --border:#e6ebf2;
+      --bg:#f7faff;
+      --card:#ffffff;
+      --shadow:0 20px 50px rgba(15,23,42,.08);
+      --radius:24px;
+      --container:1240px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.5;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(var(--container), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* top bar */
+    .topbar{
+      height:72px;
+      border-bottom:1px solid var(--border);
+      background:#fff;
+    }
+
+    .topbar .container{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .brand span:first-child{
+      color:#e53935;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      font-size:14px;
+      color:#334155;
+      font-weight:600;
+    }
+
+    .trial-btn{
+      background:#e53935;
+      color:#fff !important;
+      padding:11px 18px;
+      border-radius:12px;
+      font-weight:800;
+    }
+
+    /* hero */
+    .hero{
+      padding:78px 0 34px;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(11,99,246,.08), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(11,99,246,.06), transparent 26%),
+        linear-gradient(180deg, #f7fbff 0%, #ffffff 72%);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+      gap:46px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#eaf2ff;
+      color:var(--blue);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:58px;
+      line-height:1.02;
+      letter-spacing:-.04em;
+      font-weight:900;
+      max-width:680px;
+    }
+
+    .hero h1 .light{
+      color:#0f172a;
+    }
+
+    .hero h1 .accent{
+      color:var(--blue);
+    }
+
+    .hero-copy p{
+      margin-top:20px;
+      font-size:19px;
+      line-height:1.75;
+      color:var(--muted);
+      max-width:680px;
+    }
+
+    .hero-visual{
+      position:relative;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff 0%, #f7fbff 100%);
+      border:1px solid #e7edf6;
+      border-radius:28px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card img{
+      border-radius:18px;
+      width:100%;
+    }
+
+    /* explore section */
+    .explore{
+      padding:18px 0 90px;
+    }
+
+    .explore-head{
+      max-width:880px;
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .explore-head h2{
+      font-size:38px;
+      line-height:1.15;
+      letter-spacing:-.03em;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .explore-head p{
+      font-size:17px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .capability-shell{
+      background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+      border:1px solid var(--border);
+      border-radius:32px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .capability-tabs{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:28px;
+    }
+
+    .capability-tab{
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid #dbe6f5;
+      background:#fff;
+      color:#344256;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .capability-tab.active{
+      background:var(--blue);
+      color:#fff;
+      border-color:var(--blue);
+      box-shadow:0 12px 28px rgba(11,99,246,.24);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .feature-card{
+      background:var(--card);
+      border:1px solid #e7edf6;
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 12px 28px rgba(15,23,42,.05);
+    }
+
+    .feature-card h3{
+      font-size:22px;
+      line-height:1.2;
+      letter-spacing:-.02em;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .feature-card p{
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.7;
+    }
+
+    .cta-wrap{
+      margin-top:34px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:220px;
+      padding:15px 24px;
+      background:#e53935;
+      color:#fff;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:800;
+      box-shadow:0 18px 40px rgba(229,57,53,.24);
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:46px;
+      }
+
+      .hero-copy{
+        text-align:center;
+      }
+
+      .hero-copy p,
+      .hero h1{
+        margin-left:auto;
+        margin-right:auto;
+      }
+    }
+
+    @media (max-width: 768px){
+      .topbar{
+        height:auto;
+        padding:14px 0;
+      }
+
+      .topbar .container{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav{
+        gap:14px;
+      }
+
+      .hero{
+        padding:56px 0 20px;
+      }
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      .explore-head h2{
+        font-size:30px;
+      }
+
+      .feature-grid{
+        grid-template-columns:1fr;
+      }
+
+      .capability-shell{
+        padding:18px;
+        border-radius:24px;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="logo">
+<span>ManageEngine</span><br>
+<span>Endpoint Central</span>
+</div>
+
+<nav class="nav">
+<a href="#">Features</a>
+<a href="#">Solutions</a>
+<a href="#">Demo</a>
+<a href="#">Resources</a>
+<a href="#">Support</a>
+<a class="trial-btn">Free Trial</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div class="hero-left">
+
+<h1 class="title-main">Browser Security</h1>
+<div class="title-script">via</div>
+<div class="title-blue">Endpoint Security Platform</div>
+
+<p class="hero-desc">
+Browser security is essential, but it is only one piece of the endpoint security puzzle. True protection goes beyond the browser.
+</p>
+
+<h2 class="section-heading">
+Explore the capabilities of Endpoint Central
+</h2>
+
+<div class="toggle">
+<button class="active" data-target="security">Endpoint Security</button>
+<button data-target="management">Endpoint Management</button>
+</div>
+
+<!-- SECURITY -->
+
+<div class="feature-panel active" id="security">
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<h3>Vulnerability & Patch Management</h3>
+<p>Detect, prioritize, and remediate vulnerabilities across endpoints.</p>
+</div>
+
+<div class="feature-card">
+<h3>Application & Privilege Control</h3>
+<p>Strengthen endpoint security with trusted application control and least-privilege enforcement.</p>
+</div>
+
+<div class="feature-card">
+<h3>Device Control</h3>
+<p>Regulate peripheral devices and restrict unauthorized USB transfers.</p>
+</div>
+
+<div class="feature-card">
+<h3>Ransomware Protection</h3>
+<p>Behavior-based detection protects data at rest, in use, and in transit.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- MANAGEMENT -->
+
+<div class="feature-panel" id="management">
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<h3>Remote Troubleshooting</h3>
+<p>Securely access endpoints and resolve issues remotely.</p>
+</div>
+
+<div class="feature-card">
+<h3>Software Distribution</h3>
+<p>Deploy and update applications across your network.</p>
+</div>
+
+<div class="feature-card">
+<h3>IT Asset Management</h3>
+<p>Track hardware and software inventory in real time.</p>
+</div>
+
+<div class="feature-card">
+<h3>OS Deployment</h3>
+<p>Automate OS imaging and system provisioning.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="form-card" style="
+    height: 540px;
+">
+
+<input type="text" placeholder="Name *">
+<input type="email" placeholder="Business Email *">
+<input type="password" placeholder="Password *">
+<input type="text" placeholder="Company *">
+
+<p class="region-note">
+It looks like you're in India based on your IP.
+</p>
+
+<div class="checkbox-row">
+<input type="checkbox">
+<label>I agree to the Terms of Service and Privacy Policy.</label>
+</div>
+
+<button class="signup-btn">
+SIGN UP FOR FREE
+</button>
+
+<p class="form-login">
+Already have an account? <a href="#">Login</a>
+</p>
+
+<div class="divider">
+<hr>
+<span>or sign in using</span>
+<hr>
+</div>
+
+<div class="socials">
+<button>Google</button>
+<button>Microsoft</button>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const buttons=document.querySelectorAll(".toggle button");
+const panels=document.querySelectorAll(".feature-panel");
+
+buttons.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+buttons.forEach(b=>b.classList.remove("active"));
+panels.forEach(p=>p.classList.remove("active"));
+
+button.classList.add("active");
+
+const target=button.getAttribute("data-target");
+document.getElementById(target).classList.add("active");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
