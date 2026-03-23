@@ -1,3 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Security Plus to Endpoint Central</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#0b63f6;
+  --blue-dark:#0a1f44;
+  --text:#0f172a;
+  --muted:#5b6475;
+  --border:#e6ebf2;
+  --bg:#f7faff;
+  --card:#ffffff;
+  --shadow:0 20px 50px rgba(15,23,42,.08);
+  --radius:24px;
+  --container:1240px;
+  --red:#e53935;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.5;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(var(--container), calc(100% - 40px));
+  margin:0 auto;
+}
+
+/* top bar */
+.topbar{
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+
+.topbar-inner{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  width:min(var(--container), calc(100% - 40px));
+  margin:0 auto;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  font-size:18px;
+}
+
+.logo span:first-child{
+  color:var(--red);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:26px;
+  flex-wrap:wrap;
+}
+
+.nav a{
+  font-size:14px;
+  color:#334155;
+  font-weight:600;
+}
+
+.trial-btn{
+  background:var(--red);
+  color:#fff !important;
+  padding:11px 18px;
+  border-radius:12px;
+  font-weight:800;
+}
+
 /* HERO */
 
 .hero{
@@ -303,3 +404,334 @@
     padding:9px 16px;
   }
 }
+
+/* form card */
+.form-card{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-self:start;
+}
+
+.form-card input{
+  width:100%;
+  height:50px;
+  border:1px solid #dbe6f5;
+  border-radius:14px;
+  padding:0 14px;
+  font-size:14px;
+  color:var(--text);
+  background:#fff;
+  outline:none;
+}
+
+.form-card input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(11,99,246,.08);
+}
+
+.region-note{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.checkbox-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.checkbox-row input{
+  width:16px;
+  height:16px;
+  margin-top:2px;
+  flex:0 0 auto;
+}
+
+.checkbox-row label{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.signup-btn{
+  width:100%;
+  height:52px;
+  border:none;
+  border-radius:14px;
+  background:var(--red);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 18px 40px rgba(229,57,53,.24);
+}
+
+.form-login{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.form-login a{
+  color:var(--blue);
+  font-weight:700;
+}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:4px;
+}
+
+.divider hr{
+  flex:1;
+  border:none;
+  border-top:1px solid var(--border);
+}
+
+.divider span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.socials{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.socials button{
+  height:46px;
+  border:1px solid #dbe6f5;
+  border-radius:12px;
+  background:#fff;
+  color:#334155;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* responsive */
+@media (max-width: 1024px){
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .title-main,
+  .title-blue{
+    font-size:46px;
+  }
+
+  .title-script{
+    font-size:28px;
+  }
+
+  .hero-left{
+    text-align:center;
+  }
+
+  .hero-desc,
+  .section-heading{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .toggle{
+    justify-content:center;
+  }
+}
+
+@media (max-width: 768px){
+  .topbar{
+    padding:14px 0;
+  }
+
+  .topbar-inner{
+    min-height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav{
+    gap:14px;
+  }
+
+  .hero{
+    padding:56px 0 40px;
+  }
+
+  .title-main,
+  .title-blue{
+    font-size:38px;
+  }
+
+  .title-script{
+    font-size:24px;
+  }
+
+  .section-heading{
+    font-size:30px;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-card{
+    padding:18px;
+    border-radius:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">
+      <span>ManageEngine</span>
+      <span>Endpoint Central</span>
+    </div>
+
+    <nav class="nav">
+      <a href="#">Features</a>
+      <a href="#">Solutions</a>
+      <a href="#">Demo</a>
+      <a href="#">Resources</a>
+      <a href="#">Support</a>
+      <a href="#" class="trial-btn">Free Trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-left">
+      <h1 class="title-main">Browser Security</h1>
+      <div class="title-script">via</div>
+      <div class="title-blue">Endpoint Security Platform</div>
+
+      <p class="hero-desc">
+        Browser security is essential, but it is only one piece of the endpoint security puzzle. True protection goes beyond the browser.
+      </p>
+
+      <h2 class="section-heading">Explore the capabilities of Endpoint Central</h2>
+
+      <div class="toggle">
+        <button class="active" data-target="security">Endpoint Security</button>
+        <button data-target="management">Endpoint Management</button>
+      </div>
+
+      <div class="feature-panel active" id="security">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Vulnerability & Patch Management</h3>
+            <p>Detect, prioritize, and remediate vulnerabilities across endpoints.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Application & Privilege Control</h3>
+            <p>Strengthen endpoint security with trusted application control and least-privilege enforcement.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Device Control</h3>
+            <p>Regulate peripheral devices and restrict unauthorized USB transfers.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Ransomware Protection</h3>
+            <p>Behavior-based detection protects data at rest, in use, and in transit.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-panel" id="management">
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Remote Troubleshooting</h3>
+            <p>Securely access endpoints and resolve issues remotely.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Software Distribution</h3>
+            <p>Deploy and update applications across your network.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>IT Asset Management</h3>
+            <p>Track hardware and software inventory in real time.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>OS Deployment</h3>
+            <p>Automate OS imaging and system provisioning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <input type="text" placeholder="Name *">
+      <input type="email" placeholder="Business Email *">
+      <input type="password" placeholder="Password *">
+      <input type="text" placeholder="Company *">
+
+      <p class="region-note">
+        It looks like you're in India based on your IP.
+      </p>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="terms">
+        <label for="terms">I agree to the Terms of Service and Privacy Policy.</label>
+      </div>
+
+      <button class="signup-btn">SIGN UP FOR FREE</button>
+
+      <p class="form-login">
+        Already have an account? <a href="#">Login</a>
+      </p>
+
+      <div class="divider">
+        <hr>
+        <span>or sign in using</span>
+        <hr>
+      </div>
+
+      <div class="socials">
+        <button>Google</button>
+        <button>Microsoft</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const buttons = document.querySelectorAll(".toggle button");
+const panels = document.querySelectorAll(".feature-panel");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
+
+    button.classList.add("active");
+    const target = button.getAttribute("data-target");
+    document.getElementById(target).classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>
