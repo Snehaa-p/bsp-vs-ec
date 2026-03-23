@@ -1,364 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BSP to Endpoint Central</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser Security Plus to Endpoint Central</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    :root{
+      --blue:#0a66c2;
+      --blue-2:#2563eb;
+      --yellow:#faa61a;
+      --yellow-soft:#ffe1a8;
+      --red:#e53935;
+      --dark:#0f172a;
+      --muted:#64748b;
+      --border:#dbe5f1;
+      --bg:#f8fbff;
+      --card:#ffffff;
+    }
 
-/* ================= ROOT ================= */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-:root{
-  --blue:#2563eb;
-  --blue-dark:#1e40af;
-  --yellow:#faa61a;
-  --red:#e53935;
+    body{
+      font-family:Inter,sans-serif;
+      color:var(--dark);
+      background:#fff;
+    }
 
-  --text:#0f172a;
-  --muted:#475569;
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-  --border:#dbe5f1;
-  --bg:#f8fbff;
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 50px;
+      height:60px;
+      border-bottom:1px solid #e9eef6;
+      background:#fff;
+    }
 
-  --card:#ffffff;
-}
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      font-size:16px;
+      color:var(--dark);
+    }
 
-/* ================= BASE ================= */
+    .logo span:first-child{
+      color:var(--red);
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    .nav{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
 
-body{
-  font-family:Inter,sans-serif;
-  color:var(--text);
-  background:#fff;
-}
+    .nav a{
+      font-size:13px;
+      color:#555;
+      transition:.2s;
+      font-weight:600;
+    }
 
-/* ================= NAV ================= */
+    .nav a:hover{
+      color:#000;
+    }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 50px;
-  height:60px;
-  border-bottom:1px solid var(--border);
-}
+    .trial-btn{
+      background:var(--red);
+      color:#fff !important;
+      padding:8px 16px;
+      border-radius:6px;
+      font-weight:700;
+      box-shadow:0 10px 24px rgba(229,57,53,0.18);
+    }
 
-.logo{
-  font-weight:800;
-}
+    .hero{
+      min-height:calc(100vh - 60px);
+      display:flex;
+      align-items:center;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(250,166,26,0.08), transparent 40%),
+        linear-gradient(180deg,#eef6ff 0%,#f7fbff 60%,#ffffff 100%);
+    }
 
-.logo span:first-child{
-  color:var(--red);
-}
+    .hero-inner{
+      width:1150px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:70px;
+      padding:70px 20px;
+    }
 
-.nav{
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
+    .hero-left{
+      text-align:center;
+    }
 
-.nav a{
-  font-size:13px;
-  color:#555;
-}
+    .title-main{
+      font-size:40px;
+      font-weight:800;
+      color:var(--dark);
+    }
 
-.trial-btn{
-  background:var(--red);
-  color:#fff;
-  padding:8px 14px;
-  border-radius:6px;
-}
+    .title-script{
+      font-family:"Playfair Display",serif;
+      font-style:italic;
+      font-size:32px;
+      color:#475569;
+      margin:6px 0;
+    }
 
-/* ================= HERO ================= */
+    .title-blue{
+      font-size:40px;
+      font-weight:800;
+      color:var(--blue-2);
+    }
 
-.hero{
-  min-height:calc(100vh - 60px);
-  display:flex;
-  align-items:center;
+    .hero-desc{
+      margin:20px auto;
+      max-width:560px;
+      font-size:16px;
+      color:#475569;
+      line-height:1.7;
+    }
 
-  background:
-    radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(250,166,26,0.08), transparent 40%),
-    linear-gradient(180deg,#eef5ff 0%,#f7fbff 60%,#ffffff 100%);
-}
+    .section-heading{
+      margin-top:24px;
+      font-size:19px;
+      font-weight:700;
+      color:var(--dark);
+    }
 
-.hero-inner{
-  width:1150px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 380px;
-  gap:70px;
-  padding:70px 20px;
-}
+    .toggle{
+      display:inline-flex;
+      margin:20px 0 26px;
+      background:linear-gradient(90deg,var(--blue),var(--blue-2));
+      padding:4px;
+      border-radius:999px;
+      box-shadow:0 10px 24px rgba(37,99,235,0.16);
+    }
 
-/* ================= LEFT ================= */
+    .toggle button{
+      border:none;
+      background:transparent;
+      padding:9px 22px;
+      font-size:13px;
+      color:#fff;
+      font-weight:600;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.2s;
+    }
 
-.hero-left{
-  text-align:center;
-}
+    .toggle button.active{
+      background:#fff;
+      color:var(--blue);
+    }
 
-.title-main{
-  font-size:40px;
-  font-weight:800;
-}
+    .feature-panel{
+      display:none;
+    }
 
-.title-script{
-  font-family:"Playfair Display",serif;
-  font-size:30px;
-  font-style:italic;
-  color:#555;
-  margin:6px 0;
-}
+    .feature-panel.active{
+      display:block;
+    }
 
-.title-blue{
-  font-size:40px;
-  font-weight:800;
-  color:var(--blue);
-}
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
 
-.hero-desc{
-  margin:20px auto;
-  max-width:520px;
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.7;
-}
+    .feature-card{
+      background:rgba(255,255,255,.84);
+      backdrop-filter:blur(8px);
+      border:1px solid #e6edf8;
+      border-radius:12px;
+      padding:18px;
+      transition:.25s;
+      box-shadow:0 10px 24px rgba(15,23,42,0.05);
+      text-align:left;
+    }
 
-.section-heading{
-  margin-top:24px;
-  font-size:18px;
-  font-weight:700;
-}
+    .feature-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 28px rgba(37,99,235,0.12);
+      border-color:rgba(37,99,235,0.20);
+    }
 
-/* ================= TOGGLE ================= */
+    .feature-card h3{
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:6px;
+      color:var(--dark);
+    }
 
-.toggle{
-  display:inline-flex;
-  margin:20px 0 26px;
-  background:linear-gradient(90deg,var(--blue),var(--blue-dark));
-  padding:4px;
-  border-radius:999px;
-}
+    .feature-card p{
+      font-size:13px;
+      color:#555;
+      line-height:1.6;
+    }
 
-.toggle button{
-  border:none;
-  background:transparent;
-  padding:8px 18px;
-  font-size:13px;
-  color:#fff;
-  font-weight:600;
-  border-radius:999px;
-  cursor:pointer;
-}
+    .form-card{
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(12px);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 18px 42px rgba(15,23,42,0.10);
+      align-self:center;
+    }
 
-.toggle button.active{
-  background:#fff;
-  color:var(--blue);
-}
+    .form-card input{
+      width:100%;
+      height:46px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:0 14px;
+      font-size:13px;
+      margin-bottom:12px;
+      outline:none;
+      background:#fff;
+      color:var(--dark);
+    }
 
-/* ================= FEATURES ================= */
+    .form-card input:focus{
+      border-color:var(--blue-2);
+      box-shadow:0 0 0 3px rgba(37,99,235,0.12);
+    }
 
-.feature-panel{
-  display:none;
-}
+    .region-note{
+      font-size:12px;
+      color:#666;
+      line-height:1.6;
+      margin:4px 0 12px;
+    }
 
-.feature-panel.active{
-  display:block;
-}
+    .checkbox-row{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      margin-bottom:14px;
+    }
 
-.feature-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
+    .checkbox-row input{
+      width:14px;
+      height:14px;
+      margin:2px 0 0;
+      flex:0 0 auto;
+    }
 
-.feature-card{
-  background:rgba(255,255,255,.85);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-  transition:.25s;
-}
+    .checkbox-row label{
+      font-size:12px;
+      color:#666;
+      line-height:1.5;
+    }
 
-.feature-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 10px 22px rgba(37,99,235,0.12);
-}
+    .signup-btn{
+      width:100%;
+      height:46px;
+      border:none;
+      border-radius:10px;
+      background:var(--red);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      margin-bottom:12px;
+      box-shadow:0 14px 30px rgba(229,57,53,0.22);
+    }
 
-.feature-card h3{
-  font-size:14px;
-  margin-bottom:6px;
-}
+    .form-login{
+      text-align:center;
+      font-size:12px;
+      color:#666;
+      margin-bottom:12px;
+    }
 
-.feature-card p{
-  font-size:13px;
-  color:#555;
-}
+    .form-login a{
+      color:var(--blue-2);
+      font-weight:600;
+    }
 
-/* ================= FORM ================= */
+    .divider{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:10px 0 12px;
+    }
 
-.form-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 14px 34px rgba(15,23,42,0.10);
-}
+    .divider hr{
+      flex:1;
+      border:none;
+      border-top:1px solid #e3ebe7;
+    }
 
-.form-card input{
-  width:100%;
-  height:46px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:0 12px;
-  margin-bottom:12px;
-}
+    .divider span{
+      font-size:11px;
+      color:#777;
+    }
 
-.signup-btn{
-  width:100%;
-  height:46px;
-  border:none;
-  border-radius:10px;
-  background:var(--red);
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-}
+    .socials{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
 
-/* ================= RESPONSIVE ================= */
+    .socials button{
+      height:42px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:#fff;
+      color:#333;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
 
-@media(max-width:1024px){
+    .socials button:hover{
+      border-color:#c9d9ee;
+      background:#f9fbff;
+    }
 
-  .hero-inner{
-    grid-template-columns:1fr;
-  }
+    @media (max-width: 1200px){
+      .hero-inner{
+        width:100%;
+      }
+    }
 
-  .form-card{
-    max-width:420px;
-    margin:auto;
-  }
-}
+    @media (max-width: 1024px){
+      .hero{
+        min-height:auto;
+        padding:50px 0;
+      }
 
-@media(max-width:768px){
+      .hero-inner{
+        grid-template-columns:1fr;
+        gap:34px;
+        padding:30px 20px;
+      }
 
-  .title-main,
-  .title-blue{
-    font-size:32px;
-  }
+      .hero-left{
+        text-align:center;
+      }
 
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
-}
+      .form-card{
+        max-width:420px;
+        width:100%;
+        margin:0 auto;
+      }
+    }
 
-</style>
+    @media (max-width: 768px){
+      .topbar{
+        height:auto;
+        padding:14px 20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .nav{
+        gap:14px;
+      }
+
+      .title-main,
+      .title-blue{
+        font-size:38px;
+      }
+
+      .title-script{
+        font-size:24px;
+      }
+
+      .section-heading{
+        font-size:18px;
+      }
+
+      .feature-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .title-main,
+      .title-blue{
+        font-size:32px;
+      }
+
+      .title-script{
+        font-size:26px;
+      }
+
+      .hero-desc{
+        font-size:15px;
+      }
+
+      .section-heading{
+        font-size:17px;
+      }
+
+      .toggle{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .toggle button{
+        padding:9px 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="logo">
-    <span>ManageEngine</span> Endpoint Central
-  </div>
+  <header class="topbar">
+    <div class="logo">
+      <span>ManageEngine</span>
+      <span>Endpoint Central</span>
+    </div>
 
-  <nav class="nav">
-    <a href="#">Features</a>
-    <a href="#">Solutions</a>
-    <a href="#">Demo</a>
-    <a href="#">Support</a>
-    <a href="#" class="trial-btn">Free Trial</a>
-  </nav>
-</header>
+    <nav class="nav">
+      <a href="#">Features</a>
+      <a href="#">Solutions</a>
+      <a href="#">Demo</a>
+      <a href="#">Resources</a>
+      <a href="#">Support</a>
+      <a href="#" class="trial-btn">Free Trial</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <div class="hero-inner">
+  <section class="hero">
+    <div class="hero-inner">
 
-    <div class="hero-left">
-      <h1 class="title-main">Browser Security</h1>
-      <div class="title-script">via</div>
-      <div class="title-blue">Endpoint Security Platform</div>
+      <div class="hero-left">
+        <h1 class="title-main">Browser Security</h1>
+        <div class="title-script">via</div>
+        <div class="title-blue">Endpoint Security Platform</div>
 
-      <p class="hero-desc">
-        Browser security is essential, but it is only one piece of the endpoint security puzzle. True protection goes beyond the browser.
-      </p>
+        <p class="hero-desc">
+          Browser security is essential, but it is only one piece of the endpoint security puzzle. True protection goes beyond the browser.
+        </p>
 
-      <h2 class="section-heading">Explore the capabilities of Endpoint Central</h2>
+        <h2 class="section-heading">Explore the capabilities of Endpoint Central</h2>
 
-      <div class="toggle">
-        <button class="active" data-target="security">Endpoint Security</button>
-        <button data-target="management">Endpoint Management</button>
-      </div>
+        <div class="toggle">
+          <button class="active" data-target="security">Endpoint Security</button>
+          <button data-target="management">Endpoint Management</button>
+        </div>
 
-      <div class="feature-panel active" id="security">
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Patch Management</h3>
-            <p>Automate patching and reduce vulnerabilities.</p>
+        <div class="feature-panel active" id="security">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Vulnerability &amp; Patch Management</h3>
+              <p>Detect, prioritize, and remediate vulnerabilities across operating systems and third-party applications from a centralized console.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Application &amp; Privilege Control</h3>
+              <p>Allow only trusted applications, remove unnecessary admin rights, and grant secure elevation when users need controlled access.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Device Control</h3>
+              <p>Regulate USB and peripheral usage, restrict unauthorized devices, and control data movement across managed endpoints.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Ransomware Protection</h3>
+              <p>Detect suspicious encryption behavior early and reduce the risk of ransomware-driven disruption and data loss.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Enterprise Data Security</h3>
+              <p>Protect sensitive data with classification, visibility, and policy-based controls that extend beyond the browser.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Browser Security</h3>
+              <p>Harden browsers, control extensions, restrict risky web access, and enforce safer browsing policies across endpoints.</p>
+            </div>
           </div>
+        </div>
 
-          <div class="feature-card">
-            <h3>Application Control</h3>
-            <p>Allow only trusted applications.</p>
-          </div>
+        <div class="feature-panel" id="management">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Remote Troubleshooting</h3>
+              <p>Securely access devices, resolve user issues faster, and support distributed teams without disrupting productivity.</p>
+            </div>
 
-          <div class="feature-card">
-            <h3>Device Control</h3>
-            <p>Control USB and peripherals.</p>
-          </div>
+            <div class="feature-card">
+              <h3>Software Distribution</h3>
+              <p>Deploy, update, and maintain applications at scale with centralized software rollout and management workflows.</p>
+            </div>
 
-          <div class="feature-card">
-            <h3>Ransomware Protection</h3>
-            <p>Detect and stop ransomware behavior.</p>
+            <div class="feature-card">
+              <h3>IT Asset Management</h3>
+              <p>Track hardware and software inventory in real time to improve visibility, compliance, and lifecycle planning.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>OS Deployment</h3>
+              <p>Automate operating system imaging and provisioning to standardize devices and simplify large-scale rollouts.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Endpoint Compliance</h3>
+              <p>Enforce baseline configurations and monitor endpoint posture to support governance and internal security standards.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Unified Endpoint Management</h3>
+              <p>Manage devices, policies, software, and security controls from a single platform built for modern endpoint operations.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="feature-panel" id="management">
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Remote Support</h3>
-            <p>Troubleshoot endpoints remotely.</p>
-          </div>
+      <div class="form-card">
+        <input type="text" placeholder="Name *">
+        <input type="email" placeholder="Business Email *">
+        <input type="password" placeholder="Password *">
+        <input type="text" placeholder="Company *">
 
-          <div class="feature-card">
-            <h3>Software Deployment</h3>
-            <p>Deploy apps at scale.</p>
-          </div>
+        <p class="region-note">It looks like you're in India based on your IP.</p>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="terms">
+          <label for="terms">I agree to the Terms of Service and Privacy Policy.</label>
+        </div>
+
+        <button class="signup-btn">SIGN UP FOR FREE</button>
+
+        <p class="form-login">
+          Already have an account? <a href="#">Login</a>
+        </p>
+
+        <div class="divider">
+          <hr>
+          <span>or sign in using</span>
+          <hr>
+        </div>
+
+        <div class="socials">
+          <button>Google</button>
+          <button>Microsoft</button>
         </div>
       </div>
+
     </div>
+  </section>
 
-    <div class="form-card">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <button class="signup-btn">SIGN UP</button>
-    </div>
+  <script>
+    const buttons = document.querySelectorAll(".toggle button");
+    const panels = document.querySelectorAll(".feature-panel");
 
-  </div>
-</section>
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        panels.forEach(p => p.classList.remove("active"));
 
-<script>
-const buttons=document.querySelectorAll(".toggle button");
-const panels=document.querySelectorAll(".feature-panel");
-
-buttons.forEach(btn=>{
-  btn.onclick=()=>{
-    buttons.forEach(b=>b.classList.remove("active"));
-    panels.forEach(p=>p.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.target).classList.add("active");
-  };
-});
-</script>
+        button.classList.add("active");
+        document.getElementById(button.dataset.target).classList.add("active");
+      });
+    });
+  </script>
 
 </body>
 </html>
